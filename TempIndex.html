@@ -1,0 +1,86 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content=""/>
+        <script src="js/jquery-2.0.2.min.js"></script>
+        <script src="js/common.js"></script>
+        <script>
+            
+            $(document).ready(function(){
+                function preload(arrayOfImages) {
+                $(arrayOfImages).each(function(){
+                     (new Image()).src = this;
+                    });
+                }
+                // Usage:
+                preload([
+                    //Image.....
+                ]);
+            });
+            
+            window.onload = function(){
+            
+                var screenWidth = $(document).width();
+                var screenHeight = $(document).height();
+                var isPortrait = screenHeight > screenWidth;
+
+                var canvasBaseWidth = 640;
+                var canvasBaseHeight = 710;
+                var canvasWidth;
+                var canvasHeight;
+                var scaleRange = 1;
+                if (isPortrait)
+                {
+                  canvasWidth = screenWidth;
+                  canvasHeight = canvasWidth * 710 / 640;
+                  scaleRange = screenWidth / 640;
+                }
+                else
+                {
+                  canvasHeight = screenHeight;
+                  canvasWidth = canvasHeight * 640 / 710;
+                  scaleRange = canvasWidth / 640;
+                }
+                console.log( "scaleRange ? " + scaleRange );
+                console.log(canvasWidth + " x " + canvasHeight);
+                
+                //Start Do
+                {
+                    $("#UserInfo").text( "device ? " + navigator.userAgent );
+                    $("#CheckPC").text( "Device ? " + CheckCurrentDevice() );
+                }
+                
+            };
+            
+            $(document).ready(function(){
+                
+                   
+                
+            });
+        </script>
+        <style>
+            
+            body,html{
+               padding: 0px;
+               margin: 0px;
+               width: 100%;
+                height:100%;
+               overflow: hidden;
+           }
+            
+        </style>
+    </head>
+    <body>
+        <div id="UserInfo"></div>
+        <div id="CheckPC"></div>
+        <div id="CheckCommas"></div>
+        <div id="CheckAndroid"></div>
+    </body>
+</html>
